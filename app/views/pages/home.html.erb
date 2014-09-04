@@ -14,9 +14,12 @@
 	Anuncios de empleo con restricciones de edad, o por asi decirlo, limitaciones para personas que ya tienen los 40.
 	</p>
 
-	<p>
-		<%= link_to "Log In", "#", class: "btn btn-default btn-sm" %>
-		<%= link_to "Sign Up", "#", class: "btn btn-primary btn-sm" %>	
-	</p>
-	
+	<% if user_signed_in? %>
+		# do something
+	<% else %>
+		<p>
+			<%= link_to "Log In", new_user_session_path, class: "btn btn-default btn-sm" %>
+			<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-sm" %>	
+		</p>
+	<% end %>
 </div>
