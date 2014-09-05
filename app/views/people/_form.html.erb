@@ -35,7 +35,7 @@
 
   <div class="form-group">
     <%= f.label :profession_id %>
-    <%= f.select :profession_id, options_from_collection_for_select(Profession.all, :id, :name), {prompt: "Please Choose"}, class: "form-control" %>
+    <%= f.select(:profession_id, options_from_collection_for_select(Profession.all, :id, :name, @person.profession_id), {prompt: "Please Choose"}, class: "form-control") %>
   </div>
 
   <div class="form-group">
@@ -44,7 +44,7 @@
   </div>
   <div class="form-group">
     <%= f.label :gender %>
-    <%= f.select :gender, Person::GENDER,{},  class: "form-control-select" %>
+    <%= f.select :gender, Person::GENDER,{},  class: "form-control" %>
   </div>
 
   <div class="form-group">
