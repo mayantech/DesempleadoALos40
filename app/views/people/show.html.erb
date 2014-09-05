@@ -95,5 +95,7 @@
   <%= image_tag @person.picture.url %>
 </p>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<%= link_to 'Edit', edit_person_path(@person) %> 
+<% if current_user.is_admin %>
+|<%= link_to 'Back', people_path %>
+<% end %>

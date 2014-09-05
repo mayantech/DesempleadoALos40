@@ -4,5 +4,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @person %> |
-<%= link_to 'Back', people_path %>
+<%= link_to 'Show', @person %> 
+<% if current_user.is_admin %>
+|<%= link_to 'Back', people_path %>
+<% end %>

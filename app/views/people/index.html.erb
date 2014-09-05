@@ -1,3 +1,4 @@
+<% if current_user.is_admin %>
 <h1>Listing people</h1>
 
 <table>
@@ -57,3 +58,4 @@
 <br>
 
 <%= link_to 'New Person', new_person_path %>
+<% end %>

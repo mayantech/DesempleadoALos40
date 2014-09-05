@@ -1,11 +1,25 @@
-<div class="row">
-	<div class="col-md-2">
-	<%= image_tag (@personbymail.picture) if @personbymail.picture  heigth: 32, width: 32, size: "10x10"%>
+<% if @personbymail %>
+	<div class="row">
+		<div class="col-md-2">
+		<% if @personbymail.picture_file_name %>
+			<%= image_tag (@personbymail.picture) %>
+		<% end %>
+		</div>
+		<div class="col-md-10">
+			<div class="row">
+			<% if @personbymail.resume %>
+			<div class="col-md-02"><strong>Resumen</strong></div>
+			<div class="col-md-08">
+				<%= @personbymail.resume %>
+				<% end %>
+				<% if @personbymail.last_date_employee %>
+				<p><strong>Desempleado desde : </strong><%= @personbymail.last_date_employee  %></p>
+				<% end %>
+			</div>
+			</div>
+		</div>
 	</div>
-	<div class="col-md-10">
-		<%= @personbymail.resume if @personbymail.resume %>
-	</div>
-</div>
+<% end %>
 
 <div class="jumbotron">
 	
