@@ -11,7 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904231201) do
+ActiveRecord::Schema.define(version: 20140905171922) do
+
+  create_table "people", force: true do |t|
+    t.string   "nit",                limit: 32
+    t.string   "names",              limit: 128
+    t.string   "last_name",          limit: 128
+    t.string   "last_name_married",  limit: 128
+    t.date     "born_date"
+    t.string   "profession_id",      limit: 128
+    t.string   "career_title",       limit: 128
+    t.string   "gender",             limit: 32
+    t.string   "status",             limit: 128
+    t.string   "personal_mail",      limit: 128
+    t.string   "home_phone",         limit: 32
+    t.string   "mobile",             limit: 32
+    t.string   "facebook",           limit: 256
+    t.string   "linkedin",           limit: 256
+    t.string   "twitter",            limit: 256
+    t.string   "google",             limit: 256
+    t.string   "picture"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "last_date_employee"
+    t.text     "resume"
+  end
+
+  create_table "professions", force: true do |t|
+    t.string   "name",       limit: 128, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "professions", ["name"], name: "index_professions_on_name", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -1,0 +1,99 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nit:</strong>
+  <%= @person.nit %>
+</p>
+
+<p>
+  <strong>Names:</strong>
+  <%= @person.names %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @person.last_name %>
+</p>
+
+<p>
+  <strong>Last name married:</strong>
+  <%= @person.last_name_married %>
+</p>
+
+<p>
+  <strong>Born date:</strong>
+  <%= @person.born_date %>
+</p>
+
+<p>
+  <strong>Profession:</strong>
+  <%= @person.profession.name %>
+</p>
+
+<p>
+  <strong>Career title:</strong>
+  <%= @person.career_title %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @person.gender %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @person.status %>
+</p>
+
+<p>
+  <strong>Last Date Employee:</strong>
+  <%= @person.last_date_employee %>
+</p>
+
+<p>
+  <strong>Resume:</strong>
+  <%= @person.resume %>
+</p>
+
+<p>
+  <strong>Personal mail:</strong>
+  <%= @person.personal_mail %>
+</p>
+
+<p>
+  <strong>Home phone:</strong>
+  <%= @person.home_phone %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @person.mobile %>
+</p>
+
+<p>
+  <strong>Facebook:</strong>
+  <%= @person.facebook %>
+</p>
+
+<p>
+  <strong>Linkedin:</strong>
+  <%= @person.linkedin %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @person.twitter %>
+</p>
+
+<p>
+  <strong>Google:</strong>
+  <%= @person.google %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @person.picture %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

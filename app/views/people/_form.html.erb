@@ -1,0 +1,98 @@
+<div class="panel panel-body">
+<%= form_for(@person) do |f| %>
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :nit %>
+    <%= f.text_field :nit, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :names %>
+    <%= f.text_field :names,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name_married %>
+    <%= f.text_field :last_name_married,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :born_date %>
+    <%= f.date_select :born_date,  class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :profession_id %>
+    <%= f.select :profession_id, options_from_collection_for_select(Profession.all, :id, :name), {prompt: "Please Choose"}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :career_title %>
+    <%= f.text_field :career_title,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gender %>
+    <%= f.select :gender, Person::GENDER,{},  class: "form-control-select" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :status %>
+    <%= f.select :status, Person::STATUS,{},  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_date_employee %>
+    <%= f.date_select :last_date_employee,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :resume %>
+    <%= f.text_area :resume,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :personal_mail %>
+    <%= f.text_field :personal_mail,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :home_phone %>
+    <%= f.text_field :home_phone,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mobile %>
+    <%= f.text_field :mobile,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :facebook %>
+    <%= f.text_field :facebook,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :linkedin %>
+    <%= f.text_field :linkedin,  class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :twitter %>
+    <%= f.text_field :twitter,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :google %>
+    <%= f.text_field :google,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :picture %>
+    <%= f.text_field :picture,  class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary btn-sm"%>
+  </div>
+<% end %>
+</div>
