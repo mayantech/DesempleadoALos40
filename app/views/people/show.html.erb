@@ -92,7 +92,7 @@
 
 <p>
   <strong>Picture:</strong>
-  <%= @person.picture %>
+  <%= image_tag @person.picture.url %>
 </p>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
