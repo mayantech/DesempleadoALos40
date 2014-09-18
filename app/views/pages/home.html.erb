@@ -1,49 +1,80 @@
-<% if @personbymail %>
-	<div class="row">
-		<div class="col-md-2">
-		<% if @personbymail.picture_file_name %>
-			<%= image_tag (@personbymail.picture) %>
-		<% end %>
+
+<div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10">
+		<div class="row">
+			<div class="col-md-8"></div>
+			<% if current_user %>
+			<div class="col-md-4"><h6>Welcome : <%= @user.email %></h6></div>
+			<% end %>
 		</div>
-		<div class="col-md-10">
+
+		<% if @personbymail %>
+
 			<div class="row">
-			<% if @personbymail.resume %>
-			<div class="col-md-02"><strong>Resumen</strong></div>
-			<div class="col-md-08">
-				<%= @personbymail.resume %>
+				<div class="col-md-2">
+
+				<% if @personbymail.picture_file_name %>
+					<%= image_tag (@personbymail.picture) %>
 				<% end %>
-				<% if @personbymail.last_date_employee %>
-				<p><strong>Desempleado desde : </strong><%= @personbymail.last_date_employee  %></p>
+				</div>
+				<div class="col-md-10">
+					<div class="row">
+					<% if @personbymail.resume %>
+					<div class="col-md-02"><strong>Resumen</strong></div>
+					<div class="col-md-08">
+						<%= @personbymail.resume %>
+						<% end %>
+						<% if @personbymail.last_date_employee %>
+						<p><strong>Desempleado desde : </strong><%= dmy @personbymail.last_date_employee  %></p>
+
+						<p><strong>Cantidad de Dias Desempleado : </strong><%= ((Time.now - @personbymail.last_date_employee.to_time)/86400).to_i + 1 %></p>
+						<% end %>
+					</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+
+		<div class="jumbotron">
+
+						
+			<div class="container">
+			<h1>Bienvenidos DAL40 </h1>
+			<h2>"Desempleado a los 40" (DAL40) </h2>
+			<h4>
+			Somos una organizacion sin fines de lucro, lo unico que le ofrece al usuario final es ponerlo en contacto con sus pares con problemas similares de desempleo.
+			</h4>
+			
+			<h4>
+
+			<strong>Porque 40 y no menos de... ?</strong>
+			Porque durante estos meses he conocido personas con esa edad o mas, con buena experiencia, estudios, actualizaciones recientes de acuerdo a sus competencias, bilingues (Ingles/Español) pero sin una oferta real de trabajo.
+			</h4>
+			<h4>
+			Anuncios de empleo con restricciones de edad, o por asi decirlo, limitaciones para personas que ya tienen los 40.
+			</h4>
+
+			<% if user_signed_in? %>
+				<% if @personbymail %>
+					<%= link_to "Perfil", edit_person_path(@personbymail.id), class: "btn btn-info" %>
+
+					<% if !is_enterprise? %>
+						<%= link_to "Upgrade Career", professional_upgrades_path, class: "btn btn-success" %>
+					<% end %>
 				<% end %>
-			</div>
-			</div>
+
+				<% if is_enterprise? %>
+					<%= link_to "Ver Desempleados", person_list_path, class: "btn btn-info" %>
+				<% end %>
+			<% else %>
+				<p>
+					<%= link_to "Log In", new_user_session_path, class: "btn btn-default btn-sm" %>
+					<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-sm" %>	
+				</p>
+			<% end %>
+		</div>
 		</div>
 	</div>
-<% end %>
-
-<div class="jumbotron">
-	
-	<h1>Bienvenidos a la Aplicacion </h1>
-	<h2>"Desempleado a los 40" </h2>
-	<p>
-	Somos una organizacion sin fines de lucro, lo unico que le ofrece al usuario final es ponerlo en contacto con sus pares con problemas similares de desempleo.
-	</p>
-	
-	<p>
-
-	<strong>Porque 40 y no menos de... ?</strong>
-	Porque durante estos meses he conocido personas con esa edad o mas, con buena experiencia, estudios, actualizaciones recientes de acuerdo a sus competencias, bilingues (Ingles/Español) pero sin una oferta real de trabajo.
-	</p>
-	<p>
-	Anuncios de empleo con restricciones de edad, o por asi decirlo, limitaciones para personas que ya tienen los 40.
-	</p>
-
-	<% if user_signed_in? %>
-		<%= link_to "Perfil", edit_person_path(@personbymail.id), class: "btn btn-info" %>
-	<% else %>
-		<p>
-			<%= link_to "Log In", new_user_session_path, class: "btn btn-default btn-sm" %>
-			<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-sm" %>	
-		</p>
-	<% end %>
+	<div class="col-sm-1"></div>
 </div>

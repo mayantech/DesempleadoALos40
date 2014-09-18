@@ -1,0 +1,23 @@
+<h1>Professional Upgrade</h1>
+
+<table class="table table-striped">
+	<thead>
+		<th>Year</th>
+		<th>Institution</th>
+		<th>Upgrade</th>
+		<th>Academic Title</th>
+		<th>Country</th>
+	</thead>
+	<tbody>
+		<% @professional_upgrade_all.each do |profession| %>
+		<tr>
+			<td><%= profession.year %></td>
+			<td><%= profession.institution %></td>
+			<td><%= profession.upgrade %></td>
+			<td><%= profession.academic_title %></td>
+			<td><%= profession.country_id %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= link_to 'Back', person_list_path %>

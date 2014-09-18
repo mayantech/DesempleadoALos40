@@ -1,3 +1,4 @@
+
 <div class="panel panel-body">
 <%= form_for(@person) do |f| %>
   <% if @person.errors.any? %>
@@ -12,85 +13,174 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :nit %>
-    <%= f.text_field :nit, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :names %>
-    <%= f.text_field :names,  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name,  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :last_name_married %>
-    <%= f.text_field :last_name_married,  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :born_date %>
-    <%= f.date_select :born_date,  class: "form-control" %>
-  </div>
+  <% if !is_enterprise? %>
+    <div class="form-group">
+      <%= f.label :nit %>
+      <%= f.text_field :nit, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :names %>
+      <%= f.text_field :names,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name_married %>
+      <%= f.text_field :last_name_married,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :born_date %>
+      <%= f.date_select :born_date,  class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :profession_id %>
-    <%= f.select(:profession_id, options_from_collection_for_select(Profession.all, :id, :name, @person.profession_id), {prompt: "Please Choose"}, class: "form-control") %>
-  </div>
+    <div class="form-group">
+      <%= f.label :profession_id %>
+      <%= f.select(:profession_id, options_from_collection_for_select(Profession.all, :id, :name, @person.profession_id), {prompt: "Please Choose"}, class: "form-control") %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :career_title %>
-    <%= f.text_field :career_title,  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :gender %>
-    <%= f.select :gender, Person::GENDER,{},  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :status %>
-    <%= f.select :status, Person::STATUS,{},  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :last_date_employee %>
-    <%= f.date_select :last_date_employee,  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :resume %>
-    <%= f.text_area :resume,  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :personal_mail %>
-    <%= f.text_field :personal_mail,  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :home_phone %>
-    <%= f.text_field :home_phone,  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :mobile %>
-    <%= f.text_field :mobile,  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :facebook %>
-    <%= f.text_field :facebook,  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :linkedin %>
-    <%= f.text_field :linkedin,  class: "form-control"%>
-  </div>
-  <div class="form-group">
-    <%= f.label :twitter %>
-    <%= f.text_field :twitter,  class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :google %>
-    <%= f.text_field :google,  class: "form-control" %>
-  </div>
-  <p>
-  <div class="form-group">
-    <%= f.label :picture %>
-    <%= f.file_field :picture,  class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :career_title %>
+      <%= f.text_field :career_title,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :gender %>
+      <%= f.select :gender, Person::GENDER,{},  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :status %>
+      <%= f.select :status, Person::STATUS,{},  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_date_employee %>
+      <%= f.date_select :last_date_employee,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :resume %>
+      <%= f.text_area :resume,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :personal_mail %>
+      <%= f.text_field :personal_mail,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :home_phone %>
+      <%= f.text_field :home_phone,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :mobile %>
+      <%= f.text_field :mobile,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :facebook %>
+      <%= f.text_field :facebook,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :linkedin %>
+      <%= f.text_field :linkedin,  class: "form-control"%>
+    </div>
+    <div class="form-group">
+      <%= f.label :twitter %>
+      <%= f.text_field :twitter,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :google %>
+      <%= f.text_field :google,  class: "form-control" %>
+    </div>
+    <p>
+    <div class="form-group">
+      <%= f.label :picture %>
+      <%= f.file_field :picture,  class: "form-control" %>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= f.label :nit %>
+      <%= f.text_field :nit, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :enterprise_name %>
+      <%= f.text_field :enterprise_name,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :contact_name %>
+      <%= f.text_field :contact_name,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :address %>
+      <%= f.text_field :address,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :location %>
+      <%= f.text_field :location,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :city_id %>
+      <%= f.text_field :city_id,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :country_id %>
+      <%= f.text_field :country_id,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :postal_code %>
+      <%= f.text_field :postal_code,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :phone_office %>
+      <%= f.text_field :phone_office,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :fax %>
+      <%= f.text_field :fax,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :url %>
+      <%= f.text_field :url,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :industry_id %>
+      <%= f.text_field :industry_id,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :object_enterprise %>
+      <%= f.text_field :object_enterprise,  class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :register_condition1 %>
+      <%= f.check_box :register_condition1 %>
+    </div>    
+    <div class="form-group">
+      <%= f.label :register_condition2 %>
+      <%= f.check_box :register_condition2 %>
+    </div>  
+    <div class="form-group">
+      <%= f.label :register_condition3 %>
+      <%= f.check_box :register_condition3 %>
+    </div>  
+    <div class="form-group">
+      <%= f.label :register_condition4 %>
+      <%= f.check_box :register_condition4 %>
+    </div>  
+    <div class="form-group">
+      <%= f.label :register_condition5 %>
+      <%= f.check_box :register_condition5 %>
+    </div>  
+    <div class="form-group">
+      <%= f.label :register_condition6 %>
+      <%= f.check_box :register_condition6 %>
+    </div>  
+    <div class="form-group">
+      <%= f.label :register_condition7 %>
+      <%= f.check_box :register_condition7 %>
+    </div>  
+    <div class="form-group">
+      <%= f.label :register_condition8 %>
+      <%= f.check_box :register_condition8 %>
+    </div>  
+
+  <% end %>
   <div class="actions">
     <%= f.submit "Save", class: "btn btn-primary btn-sm"%>
   </div>

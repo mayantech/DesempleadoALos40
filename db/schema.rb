@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905210539) do
+ActiveRecord::Schema.define(version: 20140916184958) do
 
   create_table "people", force: true do |t|
     t.string   "nit",                  limit: 32
@@ -40,6 +40,38 @@ ActiveRecord::Schema.define(version: 20140905210539) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string   "enterprise_name",      limit: 128
+    t.string   "contact_name",         limit: 128
+    t.string   "address",              limit: 128
+    t.string   "location",             limit: 128
+    t.integer  "city_id"
+    t.integer  "country_id"
+    t.string   "postal_code",          limit: 32
+    t.string   "phone_office",         limit: 32
+    t.string   "fax",                  limit: 32
+    t.string   "url"
+    t.integer  "industry_id"
+    t.text     "object_enterprise"
+    t.boolean  "register_condition1"
+    t.boolean  "register_condition2"
+    t.boolean  "register_condition3"
+    t.boolean  "register_condition4"
+    t.boolean  "register_condition5"
+    t.boolean  "register_condition6"
+    t.boolean  "register_condition7"
+    t.boolean  "register_condition8"
+    t.boolean  "is_enterprise"
+  end
+
+  create_table "professional_upgrades", force: true do |t|
+    t.integer  "user_id"
+    t.string   "year",           limit: 4
+    t.string   "institution",    limit: 256
+    t.text     "upgrade"
+    t.string   "academic_title", limit: 256
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "professions", force: true do |t|
@@ -49,6 +81,14 @@ ActiveRecord::Schema.define(version: 20140905210539) do
   end
 
   add_index "professions", ["name"], name: "index_professions_on_name", unique: true
+
+  create_table "relationships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "person_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

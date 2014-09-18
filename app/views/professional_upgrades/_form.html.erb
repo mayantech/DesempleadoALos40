@@ -1,0 +1,44 @@
+
+    <%= form_for(@professional_upgrade) do |f| %>
+      <% if @professional_upgrade.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@professional_upgrade.errors.count, "error") %> prohibited this professional_upgrade from being saved:</h2>
+
+          <ul>
+          <% @professional_upgrade.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="hidden">
+        <%= f.label :user_id %>
+        <%= f.text_field :user_id, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :year %>
+        <%= f.text_field :year, class: "form-control"  %>
+      </div>
+      <div class="field">
+        <%= f.label :institution %>
+        <%= f.text_field :institution, class: "form-control"  %>
+      </div>
+      <div class="field">
+        <%= f.label :upgrade %>
+        <%= f.text_area :upgrade, class: "form-control"  %>
+      </div>
+      <div class="field">
+        <%= f.label :academic_title %>
+        <%= f.text_field :academic_title, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :country_id %>
+        <%= f.number_field :country_id, class: "form-control"  %>
+      </div>
+      <div class="actions">
+        <%= f.submit class: "btn btn-success btn-md" %>
+      </div>
+    <% end %>
+

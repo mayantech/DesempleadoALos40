@@ -1,0 +1,35 @@
+<h1>Listing professional_upgrades</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Year</th>
+      <th>Institution</th>
+      <th>Upgrade</th>
+      <th>Academic title</th>
+      <th>Country</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @professional_upgrades.order("year DESC").each do |professional_upgrade| %>
+      <tr>
+        <td><%= professional_upgrade.user_id %></td>
+        <td><%= professional_upgrade.year %></td>
+        <td><%= professional_upgrade.institution %></td>
+        <td><%= professional_upgrade.upgrade %></td>
+        <td><%= professional_upgrade.academic_title %></td>
+        <td><%= professional_upgrade.country_id %></td>
+        <td><%= link_to 'Show', professional_upgrade, class: "btn btn-warning btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_professional_upgrade_path(professional_upgrade), class: "btn btn-success btn-sm" %></td>
+        <td><%= link_to 'Destroy', professional_upgrade, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Professional upgrade', new_professional_upgrade_path, class: "btn btn-primary btn-sm" %>

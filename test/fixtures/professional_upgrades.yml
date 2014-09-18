@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  year: MyString
+  institution: MyString
+  upgrade: MyText
+  academic_title: MyString
+  country_id: 1
+
+two:
+  user_id: 1
+  year: MyString
+  institution: MyString
+  upgrade: MyText
+  academic_title: MyString
+  country_id: 1

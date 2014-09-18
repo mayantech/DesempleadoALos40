@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :people
+  resources :relationships
+
+  resources :professional_upgrades#, only: [:new, :edit, :show, :update]
+
+  resources :people 
 
   #devise_for :users
   devise_for :users, :controllers => {:registrations => "registrations"}
@@ -8,7 +12,8 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   get "about" => "pages#about"
-
+  get "person_list" => "pages#person_list"
+  get "professional_upgrade_list/:id", to: "pages#professional_upgrade_list", as: 'professional_upgrade_list'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

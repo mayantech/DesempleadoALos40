@@ -1,0 +1,45 @@
+<h1>Lista de Personas Desempleadas</h1>
+<div class="row">
+	<div class="col-md-8"></div>
+	<div class="col-md-4">
+		<%= form_tag({controller: "pages", action: "person_list"}, method: :get) do %>
+			<%= select_tag "profession", options_from_collection_for_select(Profession.all, 'id', 'name', @searchbox), { :prompt => 'Select a Profession', :include_blank => 'None' } %>	
+			<%= submit_tag "Search People", :name => nil, class: "btn btn-sm btn-success" %>
+		<% end %>
+	</div>
+</div>
+<table class="table table-striped">
+	<thead>
+		<th>id</th>
+		<th>Name</th>
+		<th>Last Name</th>
+		<th>Last Date Employee</th>
+		<th>Born Date</th>
+		<th>Profession</th>
+		<th>Gender</th>
+		<th>Resume</th>
+		<th></th>
+	</thead>
+
+	<tbody>
+		<% @people.each do |person| %>
+			<% if person.names.present? %>
+			<tr>
+				<td><%= person.id %></td>
+				<td><%= person.names %> </td>
+				<td><%= person.last_name %></td>
+				<td><%= person.last_date_employee %></td>
+				<td><%= person.born_date %></td>
+				<td><%= person.profession.name %></td>
+				<td><%= person.gender %></td>
+				<td><%= person.resume %></td>
+				<td><%= link_to "View More Info...", person_path(person.id), class: "btn btn-primary btn-sm" %></td>
+				<td><%= link_to "Contact to person ", person_path(person.id), class: "btn btn-danger btn-sm" %></td>
+			</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>
+<br>
+
+<%= link_to 'Back', root_path %>

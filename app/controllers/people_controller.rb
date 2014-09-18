@@ -19,11 +19,13 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
+    
   end
 
   # POST /people
   # POST /people.json
   def create
+    personal_mail = current_user.email
     @person = Person.new(person_params)
 
     respond_to do |format|
@@ -70,6 +72,6 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:nit, :names, :last_name, :last_name_married, :born_date, :profession_id, :career_title, :gender, :status, :personal_mail, :home_phone, :mobile, :facebook, :linkedin, :twitter, :google, :picture, :resume, :last_date_employee)
+      params.require(:person).permit(:nit, :names, :last_name, :last_name_married, :born_date, :profession_id, :career_title, :gender, :status, :personal_mail, :home_phone, :mobile, :facebook, :linkedin, :twitter, :google, :picture, :resume, :last_date_employee, :enterprise_name, :contact_name, :address, :location, :city_id, :country_id, :postal_code, :phone_office, :fax, :url, :industry_id, :object_enterprise, :register_condition1, :register_condition2, :register_condition3, :register_condition4, :register_condition5, :register_condition6, :register_condition7, :register_condition8)
     end
 end
