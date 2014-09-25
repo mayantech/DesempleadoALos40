@@ -6,4 +6,8 @@ module ApplicationHelper
 	def dmy(date)
 		date.strftime("%d/%m/%Y")
 	end
+
+	def existe_evento(evento, user)
+	    UserEvent.where("event_id = ? and user_id = ?", evento, user)
+	end
 end

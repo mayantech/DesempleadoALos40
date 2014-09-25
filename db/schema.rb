@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916184958) do
+ActiveRecord::Schema.define(version: 20140923163402) do
+
+  create_table "events", force: true do |t|
+    t.date     "event_date"
+    t.string   "event_title",                limit: 256
+    t.text     "event_description"
+    t.string   "place_event",                limit: 256
+    t.text     "agenda_event"
+    t.string   "picture_event"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_event_file_name"
+    t.string   "picture_event_content_type"
+    t.integer  "picture_event_file_size"
+    t.datetime "picture_event_updated_at"
+  end
 
   create_table "people", force: true do |t|
     t.string   "nit",                  limit: 32
@@ -90,6 +106,13 @@ ActiveRecord::Schema.define(version: 20140916184958) do
     t.datetime "updated_at"
   end
 
+  create_table "user_events", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -104,6 +127,7 @@ ActiveRecord::Schema.define(version: 20140916184958) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_admin"
+    t.boolean  "is_enterprise"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

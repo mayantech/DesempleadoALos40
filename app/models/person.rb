@@ -1,16 +1,15 @@
 class Person < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :profession
-	has_attached_file :picture
-	has_many :professional_upgrades
 	
-	has_many :relationships, foreign_key: :relation_id_person
-	has_many :relationships, foreign_key: :relation_id_enterprise
-
-		has_many :entsequenciaestado, foreign_key: :siguiente_estado_id 
-	
+	has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 	validates_attachment_content_type :picture, :content_type => %w(image/jpeg image/jpg image/png)
 
+	has_many :professional_upgrades
+	has_many :relationships, foreign_key: :relation_id_person
+	has_many :relationships, foreign_key: :relation_id_enterprise
+	has_many :entsequenciaestado, foreign_key: :siguiente_estado_id 
+	
 	GENDER = ["Femenino", "Masculino"]
 	STATUS = ["Buscando para Mejorar", "Empleado", "Jubilado", "Desempleado"]
 

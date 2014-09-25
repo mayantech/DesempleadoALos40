@@ -15,13 +15,13 @@
 				<div class="col-md-2">
 
 				<% if @personbymail.picture_file_name %>
-					<%= image_tag (@personbymail.picture) %>
+					<%= image_tag (@personbymail.picture), height: 120 %>
 				<% end %>
 				</div>
 				<div class="col-md-10">
 					<div class="row">
 					<% if @personbymail.resume %>
-					<div class="col-md-02"><strong>Resumen</strong></div>
+					<div class="col-md-02"><strong>Resume</strong></div>
 					<div class="col-md-08">
 						<%= @personbymail.resume %>
 						<% end %>

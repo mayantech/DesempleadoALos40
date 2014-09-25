@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   protected
   def configure_permitted_parameters
   	# devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :id, :is_admin, :is_enterprise) }
-  	# devise_parameter_sanitizer.for(:sign_up) << :is_enterprise
-   #  devise_parameter_sanitizer.for(:account_update) << :is_enterprise
+  	devise_parameter_sanitizer.for(:sign_up) << :is_enterprise
+    devise_parameter_sanitizer.for(:account_update) << :is_enterprise
   end
 
   def trae_person

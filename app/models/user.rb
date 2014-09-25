@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
 
   has_one :person
   has_many :professional_upgrades
-  
+  has_many :user_events
 
 end
